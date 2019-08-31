@@ -3,13 +3,112 @@
   <head>
     <title>Couple Story</title>
     <meta charset="utf-8" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <!-- <link href="styles.css" rel="stylesheet" /> -->
     
   </head>
 
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 992px;
+  font-family: "Helvetica";
+}
+
+/* navigation bar */
+
+.navbar {
+  height: 66px;
+  background-color: white;
+  text-align: center;
+  line-height: 66px;
+}
+
+#logo {
+  vertical-align: middle;
+}
+
+/* main */
+
+.main {
+  background-image: linear-gradient(135deg, #B0A8FF 0%, #786FFF 100%);
+  padding: 80px 0;
+  min-height: calc(100vh - 66px);
+}
+
+.container {
+  background: #FFFFFF;
+  box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.10);
+  border-radius: 10px;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 32px 66px;
+}
+
+.container h2 {
+  font-size: 24px;
+  color: #4A4A4A;
+  margin: 0;
+  margin-bottom: 28px;
+}
+
+.container h2 span {
+  font-weight: 700;
+  color: #786FFF;
+}
+
+.container .img-row {
+  margin-bottom: 40px;
+}
+
+.container .img-row img {
+  vertical-align: middle;
+  margin: 0 6px;
+}
+
+.date-row {
+  margin-bottom: 40px;
+}
+
+label[for=start] {
+  font-size: 16px;
+  color: #4A4A4A;
+  line-height: 34.5px;
+  vertical-align: middle;
+  margin-right: 13px;
+}
+
+input[type=date] {
+  border: 1px solid #786FFF;
+  border-radius: 5px;
+  padding: 8px 14px;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+#calculate {
+  width: 100%;
+  background: #786FFF;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  padding: 14px 0;
+  border: none;
+  cursor: pointer;
+}
+.face{
+  border-radius: 10px;
+}
+
+  </style>
   <body>
     <div class="navbar">
-      <img id="logo" src="images/logo.png" width="157">
+      <img id="logo" src="logo.png" width="157">
     </div>
 
     <div class="main">
@@ -18,20 +117,20 @@
         <h2>만난지 <span id="day-count">00</span>일째</h2>
 
         <div class="img-row">
-          <img src="images/seung_hee.jpg" width="148" height="148">
-          <img src="images/dot.png" width="8">
-          <img src="images/dot.png" width="8">
-          <img src="images/heart.png" width="16">
-          <img src="images/dot.png" width="8">
-          <img src="images/dot.png" width="8">
-          <img src="images/hakjun.jpg" width="148" height="148">
+          <img class="face" src="seung_hee.jpg" width="148" height="148">
+          <img src="dot.png" width="8">
+          <img src="dot.png" width="8">
+          <img src="heart.png" width="16">
+          <img src="dot.png" width="8">
+          <img src="dot.png" width="8">
+          <img class="face" src="hakjun.jpg" width="148" height="148">
         </div>
         
         <!-- 만나기 시작한 날짜 -->
-        <div class="date-row">
+<!--         <div class="date-row">
           <label for="start">시작일</label>
           <input type="date" name="start" id="start">
-        </div>
+        </div> -->
 
         <!-- 며칠됐는지 계산하기! -->
         <button id="calculate">결과 보기</button>
@@ -50,14 +149,17 @@
             var input = $('#start').val();
             var now = new Date();
             var startDate = new Date(input);
+//추가부분
+            var then = new Date("august 12,2019");
+            var term1 = (now.getTime() - then.getTime()) / 1000 / 60 / 60 / 24 ;
+//추가 부분 
+            // var term = (now.getTime() - startDate.getTime() / 1000 / 60 / 60 / 24 ;
 
-            var term = (now.getTime() - startDate.getTime()) / 1000 / 60 / 60 / 24 ;
+            // if (input === '') {
+            //     alert('날짜를 입력해주세요');
+            // }
 
-            if (input === '') {
-                alert('날짜를 입력해주세요');
-            }
-
-            $('#day-count').text(Math.ceil(term));
+            $('#day-count').text(Math.ceil(term1));
         }
 
       // 코드를 입력하세요!
